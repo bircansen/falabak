@@ -27,4 +27,17 @@ export const imageMap: Record<string, number> = {
   // Characters
   "assets/characters/luna.png": require("../assets/characters/luna.png"),
 
+  // Tarot Cards
+  "the-fool": require("../assets/cards/tarot_01.png"),
+  "the-magician": require("../assets/cards/tarot_02.png"),
+  "the-high-priestess": require("../assets/cards/tarot_03.png"),
+  "the-empress": require("../assets/cards/tarot_04.png"),
+  "the-emperor": require("../assets/cards/tarot_05.png"),
+  "the-hierophant": require("../assets/cards/tarot_06.png"),
+  "the-lovers": require("../assets/cards/tarot_07.png"),
+  "the-chariot": require("../assets/cards/tarot_08.png"),
+  "strength": require("../assets/cards/tarot_09.png"),
+  "the-hermit": require("../assets/cards/tarot_10.png"),
+  "wheel-of-fortune": require("../assets/cards/tarot_11.png"),
+  "justice": require("../assets/cards/tarot_12.png"),
 };
