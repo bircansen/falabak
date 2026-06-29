@@ -97,7 +97,7 @@
   },
 
   "activities": [
-    { "id": "sans-kurabiyesi", "title": "Şans Kurabiyesi", "icon": "fortune-cookie", "route": "activity/fortune-cookie" },
+    { "id": "sans-kurabiyesi", "title": "Şans Kurabiyesi", "icon": "cookie", "route": "activity/fortune-cookie" },
     { "id": "eglence",         "title": "Eğlence",          "icon": "sparkles",       "route": "activity/fun" },
     { "id": "carkifelek",      "title": "Çarkıfelek",       "icon": "wheel",          "route": "activity/wheel" },
     { "id": "salla-kazan",     "title": "Salla Kazan",      "icon": "shake-gift",     "route": "activity/shake" }
