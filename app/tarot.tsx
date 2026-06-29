@@ -27,6 +27,8 @@ import ResetButton from "../components/ResetButton";
 import TarotFan from "../animations/TarotFan";
 import ArcSlider from "../animations/ArcSlider";
 
+import TarotSkeleton from "../components/TarotSkeleton";
+
 import useTarot, {
   TarotCard,
 } from "../hooks/useTarot";
@@ -110,22 +112,25 @@ export default function TarotScreen() {
 
           <View style={styles.slotRow}>
             <TarotSlot
-              title="Geçmiş"
-              image={pastCard?.frontImage}
-              revealed={revealed}
-            />
+  title="Geçmiş"
+  image={pastCard?.frontImage}
+  revealed={revealed}
+  loading={loadingReading}
+/>
 
-            <TarotSlot
-              title="Şimdi"
-              image={presentCard?.frontImage}
-              revealed={revealed}
-            />
+<TarotSlot
+  title="Şimdi"
+  image={presentCard?.frontImage}
+  revealed={revealed}
+  loading={loadingReading}
+/>
 
-            <TarotSlot
-              title="Gelecek"
-              image={futureCard?.frontImage}
-              revealed={revealed}
-            />
+<TarotSlot
+  title="Gelecek"
+  image={futureCard?.frontImage}
+  revealed={revealed}
+  loading={loadingReading}
+/>
           </View>
 
           <View style={styles.selectTitleContainer}>
@@ -163,7 +168,9 @@ export default function TarotScreen() {
                 </Text>
               </TouchableOpacity>
             )}
-
+          
+          {loadingReading && <TarotSkeleton />}
+          
           {!loadingReading &&
             revealed && (
               <>

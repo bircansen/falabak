@@ -9,9 +9,11 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 
 import Animated, {
+  cancelAnimation,
   useAnimatedStyle,
   useSharedValue,
   withRepeat,
+  withSequence,
   withSpring,
   withTiming,
 } from "react-native-reanimated";
@@ -35,7 +37,9 @@ function TarotSlot({
   loading = false,
 }: TarotSlotProps) {
   const scale = useSharedValue(0.96);
-  const shimmerX = useSharedValue(-100);
+
+const translateX = useSharedValue(-180);
+const opacity = useSharedValue(0.75);
 
   useEffect(() => {
     scale.value = withSpring(image ? 1 : 0.96, {
@@ -45,33 +49,56 @@ function TarotSlot({
   }, [image]);
 
   useEffect(() => {
-    if (loading) {
-      shimmerX.value = withRepeat(
-        withTiming(180, {
-          duration: 1000,
+  if (loading) {
+    translateX.value = withRepeat(
+      withTiming(320, {
+        duration: 1200,
+      }),
+      -1,
+      false
+    );
+
+    opacity.value = withRepeat(
+      withSequence(
+        withTiming(1, {
+          duration: 900,
         }),
-        -1,
-        false
-      );
-    } else {
-      shimmerX.value = -100;
-    }
-  }, [loading]);
+        withTiming(0.75, {
+          duration: 900,
+        })
+      ),
+      -1,
+      true
+    );
+  } else {
+    cancelAnimation(translateX);
+    cancelAnimation(opacity);
+
+    translateX.value = -180;
+    opacity.value = 0.75;
+  }
+
+  return () => {
+    cancelAnimation(translateX);
+    cancelAnimation(opacity);
+  };
+}, [loading]);
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ scale: scale.value }],
   }));
 
-  const shimmerStyle = useAnimatedStyle(() => ({
-    transform: [
-      {
-        translateX: shimmerX.value,
-      },
-      {
-        rotate: "20deg",
-      },
-    ],
-  }));
+  const skeletonStyle = useAnimatedStyle(() => ({
+  opacity: opacity.value,
+}));
+
+const shimmerStyle = useAnimatedStyle(() => ({
+  transform: [
+    {
+      translateX: translateX.value,
+    },
+  ],
+}));
 
   const displayImage = !image
     ? SLOT_IMAGE
@@ -80,51 +107,54 @@ function TarotSlot({
     : CARD_BACK;
 
   return (
-    <View style={styles.container}>
-      <Animated.View
-        style={[styles.slot, animatedStyle]}
-      >
-        <Image
-          source={displayImage}
-          style={styles.card}
-          resizeMode="cover"
-          fadeDuration={0}
-        />
+  <View style={styles.container}>
+    <Animated.View
+      style={[styles.slot, animatedStyle]}
+    >
+      <Image
+        source={displayImage}
+        style={styles.card}
+        resizeMode="cover"
+        fadeDuration={0}
+      />
 
-        {loading && image && (
-          <View
-            pointerEvents="none"
-            style={styles.loadingOverlay}
+      {loading && image && (
+        <Animated.View
+          pointerEvents="none"
+          style={[
+            styles.loadingOverlay,
+            skeletonStyle,
+          ]}
+        >
+          <Animated.View
+            style={[
+              styles.shimmer,
+              shimmerStyle,
+            ]}
           >
-            <Animated.View
-              style={[
-                styles.shimmer,
-                shimmerStyle,
+            <LinearGradient
+              colors={[
+                "transparent",
+                Theme.colors.white, //overlay
+                "transparent",
               ]}
-            >
-              <LinearGradient
-  colors={[
-    "transparent",
-    Theme.colors.whiteOverlay,
-    "transparent",
-  ]}
-  start={{ x: 0, y: 0 }}
-  end={{ x: 1, y: 0 }}
-  style={StyleSheet.absoluteFill}
-/>
-            </Animated.View>
-          </View>
-        )}
-      </Animated.View>
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+              style={StyleSheet.absoluteFill}
+            />
+          </Animated.View>
+        </Animated.View>
+      )}
+    </Animated.View>
 
-      <Text style={styles.title}>
-        {title}
-      </Text>
-    </View>
-  );
+    <Text style={styles.title}>
+      {title}
+    </Text>
+  </View>
+); 
 }
-
 export default memo(TarotSlot);
+
 const styles = StyleSheet.create({
   container: {
     width: 92,
@@ -147,7 +177,7 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     shadowOffset: {
       width: 0,
-      height: Theme.spacing.xs + 1, 
+      height: Theme.spacing.xs + 1,
     },
 
     elevation: 8,
@@ -159,19 +189,17 @@ const styles = StyleSheet.create({
   },
 
   loadingOverlay: {
-    ...StyleSheet.absoluteFillObject,
-    overflow: "hidden",
-  },
+  ...StyleSheet.absoluteFillObject,
+  overflow: "hidden",
+  backgroundColor: Theme.colors.cardDark,
+},
 
   shimmer: {
-    position: "absolute",
-
-    top: -Theme.spacing.xxl,
-    bottom: -Theme.spacing.xxl,
-    left: -Theme.spacing.md,
-
-    width: 55,
-  },
+  position: "absolute",
+  top: 0,
+  bottom: 0,
+  width: 140,
+},
 
   title: {
     marginTop: Theme.spacing.sm,
