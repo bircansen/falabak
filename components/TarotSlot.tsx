@@ -103,15 +103,15 @@ function TarotSlot({
               ]}
             >
               <LinearGradient
-                colors={[
-                  "transparent",
-                  "rgba(255,255,255,0.18)",
-                  "transparent",
-                ]}
-                start={{ x: 0, y: 0 }}
-                end={{ x: 1, y: 0 }}
-                style={StyleSheet.absoluteFill}
-              />
+  colors={[
+    "transparent",
+    Theme.colors.whiteOverlay,
+    "transparent",
+  ]}
+  start={{ x: 0, y: 0 }}
+  end={{ x: 1, y: 0 }}
+  style={StyleSheet.absoluteFill}
+/>
             </Animated.View>
           </View>
         )}
@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     shadowOffset: {
       width: 0,
-      height: 5,
+      height: Theme.spacing.xs + 1, 
     },
 
     elevation: 8,
@@ -166,22 +166,18 @@ const styles = StyleSheet.create({
   shimmer: {
     position: "absolute",
 
-    top: -40,
-    bottom: -40,
-    left: -20,
+    top: -Theme.spacing.xxl,
+    bottom: -Theme.spacing.xxl,
+    left: -Theme.spacing.md,
 
     width: 55,
   },
 
   title: {
     marginTop: Theme.spacing.sm,
-
     color: Theme.colors.text,
-
     fontSize: Theme.fontSizes.md,
-
     fontWeight: "700",
-
     textAlign: "center",
   },
 });

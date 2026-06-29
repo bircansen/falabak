@@ -30,7 +30,9 @@ export const Colors = {
 
   arrowBackground: "#465174",
 
-  overlay: "rgba(255,255,255,0.18)",
+  whiteOverlay: "rgba(255,255,255,0.18)",
+  whiteOverlayLight: "rgba(255,255,255,0.10)",
+  whiteOverlayLighter: "rgba(255,255,255,0.06)",
 
   quoteGradientStart: "#376CFF",
   quoteGradientEnd: "#355AF7",
@@ -38,6 +40,16 @@ export const Colors = {
   quoteTitle: "#D7E5FF",
   quoteAuthor: "#C9DBFF",
 
-  overlayLight: "rgba(255,255,255,0.10)",
-  overlayLighter: "rgba(255,255,255,0.06)",
-};
+  tarotGradientStart: "#0F1733",
+  tarotGradientMiddle: "#1D2F5D",
+  tarotGradientEnd: "#27457B",
+
+  arcLine: "rgba(255,255,255,0.25)",
+  arcThumbStroke: "#D8E6FF",
+
+  backgroundGradient: [
+    "#0F1733",
+    "#1D2F5D",
+    "#27457B",
+  ] as const,
+} as const;
