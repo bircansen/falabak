@@ -10,6 +10,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 import CoinBadge from "./CoinBadge";
 import { Theme } from "../constants/theme";
+import { imageMap } from "../data/imageMap";
 
 interface HeaderProps {
   userName: string;
@@ -21,8 +22,9 @@ export default function Header({
   coinBalance,
 }: HeaderProps) {
   return (
-    <View style={styles.container}>
-      <View style={styles.topRow}>
+  <View style={styles.container}>
+    <View style={styles.topRow}>
+      <View style={styles.left}>
         <TouchableOpacity style={styles.iconButton}>
           <Ionicons
             name="notifications"
@@ -30,28 +32,32 @@ export default function Header({
             color={Theme.colors.white}
           />
         </TouchableOpacity>
+      </View>
 
+      <View style={styles.center}>
         <View style={styles.logoContainer}>
           <Image
-            source={require("../assets/images/start.png")}
+            source={imageMap.logo}
             style={styles.logoIcon}
             resizeMode="contain"
           />
 
           <Text style={styles.logo}>FalaBak</Text>
         </View>
+      </View>
 
+      <View style={styles.right}>
         <CoinBadge balance={coinBalance} />
       </View>
-
-      <View style={styles.welcome}>
-        <Text style={styles.welcomeText}>Hoş Geldin,</Text>
-
-        <Text style={styles.name}>{userName}</Text>
-      </View>
     </View>
-  );
-}
+
+    <View style={styles.welcome}>
+      <Text style={styles.welcomeText}>Hoş Geldin,</Text>
+
+      <Text style={styles.name}>{userName}</Text>
+    </View>
+  </View>
+);}
 
 const styles = StyleSheet.create({
   container: {
@@ -61,10 +67,9 @@ const styles = StyleSheet.create({
   },
 
   topRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
+  flexDirection: "row",
+  alignItems: "center",
+},
 
   iconButton: {
     width: 42,
@@ -88,7 +93,7 @@ const styles = StyleSheet.create({
 
   logo: {
     color: Theme.colors.white,
-    fontSize: Theme.fontSizes.title,
+    fontSize: 24,
     fontWeight: "700",
   },
 
@@ -98,7 +103,7 @@ const styles = StyleSheet.create({
 
   welcomeText: {
     color: Theme.colors.textSecondary,
-    fontSize: Theme.fontSizes.lg,
+    fontSize: 16,
   },
 
   name: {
@@ -107,4 +112,18 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     marginTop: Theme.spacing.xs,
   },
-});
+  left: {
+  flex: 1,
+  alignItems: "flex-start",
+},
+
+center: {
+  flex: 1,
+  alignItems: "center",
+},
+
+right: {
+  flex: 1,
+  alignItems: "flex-end",
+},
+})

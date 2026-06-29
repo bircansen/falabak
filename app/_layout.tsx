@@ -1,13 +1,18 @@
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { SafeAreaProvider } from "react-native-safe-area-context";
+import {
+  SafeAreaProvider,
+} from "react-native-safe-area-context";
 import { useEffect, useState } from "react";
 import { Asset } from "expo-asset";
 
 import { Theme } from "../constants/theme";
+import { CoinProvider } from "../contexts/CoinContext";
 
 import "react-native-gesture-handler";
 import "react-native-reanimated";
+
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 export default function RootLayout() {
   const [ready, setReady] = useState(false);
@@ -21,6 +26,10 @@ export default function RootLayout() {
         require("../assets/icons/send.png"),
         require("../assets/icons/moon.png"),
         require("../assets/icons/user.png"),
+        
+        // Header
+        require("../assets/icons/coin.png"),
+        require("../assets/images/start.png"),
 
         // Fortune
         require("../assets/icons/coffee.png"),
@@ -48,21 +57,25 @@ export default function RootLayout() {
   }
 
   return (
-    <SafeAreaProvider>
-      <StatusBar
-        style="light"
-        backgroundColor={Theme.colors.background}
-      />
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <SafeAreaProvider>
+        <CoinProvider>
+          <StatusBar
+            style="light"
+            backgroundColor={Theme.colors.background}
+          />
 
-      <Stack
-        screenOptions={{
-          headerShown: false,
-          animation: "fade",
-          contentStyle: {
-            backgroundColor: Theme.colors.background,
-          },
-        }}
-      />
-    </SafeAreaProvider>
+          <Stack
+            screenOptions={{
+              headerShown: false,
+              animation: "fade",
+              contentStyle: {
+                backgroundColor: Theme.colors.background,
+              },
+            }}
+          />
+        </CoinProvider>
+      </SafeAreaProvider>
+    </GestureHandlerRootView>
   );
 }

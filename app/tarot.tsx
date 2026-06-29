@@ -1,3 +1,4 @@
+import * as Haptics from "expo-haptics";
 import React, {
   useMemo,
   useState,
@@ -10,6 +11,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Text,
+  Alert,
 } from "react-native";
 import { Asset } from "expo-asset";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -22,18 +24,17 @@ import { imageMap } from "../data/imageMap";
 import TarotHeader from "../components/TarotHeader";
 import TarotSlot from "../components/TarotSlot";
 import TarotMeaning from "../components/TarotMeaning";
+import TarotSkeleton from "../components/TarotSkeleton";
 import ResetButton from "../components/ResetButton";
 
 import TarotFan from "../animations/TarotFan";
 import ArcSlider from "../animations/ArcSlider";
 
-import TarotSkeleton from "../components/TarotSkeleton";
-
-import * as Haptics from "expo-haptics";
-
 import useTarot, {
   TarotCard,
 } from "../hooks/useTarot";
+
+import { useCoin } from "../contexts/CoinContext";
 
 export default function TarotScreen() {
   const {
@@ -53,6 +54,10 @@ export default function TarotScreen() {
   const [imagesReady, setImagesReady] =
     useState(false);
 
+const TAROT_COST = data.tarotReading.cost;
+
+const { coinBalance, setCoinBalance } = useCoin();
+
   useEffect(() => {
     async function preloadImages() {
       try {
@@ -71,7 +76,7 @@ export default function TarotScreen() {
     return data.tarotCards.map((item: any) => ({
       id: item.id,
       name: item.name,
-      frontImage: imageMap[item.image],
+      frontImage: imageMap[item.id],
       uprightMeaning: item.uprightMeaning,
       reversedMeaning: item.reversedMeaning,
     }));
@@ -81,7 +86,6 @@ export default function TarotScreen() {
     () => selectedCards.map((c) => c.id),
     [selectedCards]
   );
-
   const handleSelectCard = useCallback(
   async (card: TarotCard) => {
     await Haptics.selectionAsync();
@@ -91,33 +95,48 @@ export default function TarotScreen() {
 );
 
   const handleReveal = useCallback(async () => {
-    if (loadingReading) return;
+  if (loadingReading) return;
 
-    setLoadingReading(true);
+  if (coinBalance < TAROT_COST) {
+    Alert.alert(
+      "Yetersiz Jeton",
+      `Tarot falı açmak için ${TAROT_COST} jetona ihtiyacınız var.`
+    );
+    return;
+  }
 
-    if (!imagesReady) {
-      await Asset.loadAsync(
-  Object.values(imageMap) as number[]
-);
-    }
+  setLoadingReading(true);
 
-    setTimeout(() => {
-      setRevealed(true);
-      setLoadingReading(false);
-    }, 900);
-  }, [loadingReading, imagesReady]);
+  setCoinBalance((prev) => prev - TAROT_COST);
+
+  if (!imagesReady) {
+    await Asset.loadAsync(
+      Object.values(imageMap) as number[]
+    );
+  }
+
+  setTimeout(() => {
+    setRevealed(true);
+    setLoadingReading(false);
+  }, 900);
+}, [
+  loadingReading,
+  imagesReady,
+  coinBalance,
+  TAROT_COST,
+]);
     return (
     <LinearGradient
-  colors={Theme.colors.backgroundGradient}
-  style={styles.container}
->
+      colors={["#0F1733", "#1D2F5D", "#27457B"]}
+      style={styles.container}
+    >
       <SafeAreaView style={styles.safeArea}>
         <ScrollView
           showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.content}
         >
           <TarotHeader
-            coinBalance={data.user.coinBalance}
+            coinBalance={coinBalance}
           />
 
           <View style={styles.slotRow}>
@@ -178,9 +197,9 @@ export default function TarotScreen() {
                 </Text>
               </TouchableOpacity>
             )}
-          
+
           {loadingReading && <TarotSkeleton />}
-          
+
           {!loadingReading &&
             revealed && (
               <>
@@ -217,7 +236,7 @@ const styles = StyleSheet.create({
   content: {
     paddingHorizontal: Theme.spacing.lg,
     paddingTop: Theme.spacing.sm,
-    paddingBottom: 60,
+    paddingBottom: Theme.spacing.xxl, 
   },
 
   slotRow: {
@@ -280,7 +299,7 @@ const styles = StyleSheet.create({
   revealText: {
     color: Theme.colors.white,
 
-    fontSize: 17,
+    fontSize: Theme.fontSizes.lg,
 
     fontWeight: "700",
 

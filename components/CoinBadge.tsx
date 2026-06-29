@@ -6,6 +6,9 @@ import {
   Image,
 } from "react-native";
 
+import { Theme } from "../constants/theme";
+import { imageMap } from "../data/imageMap";
+
 interface CoinBadgeProps {
   balance: number;
 }
@@ -16,7 +19,7 @@ export default function CoinBadge({
   return (
     <View style={styles.container}>
       <Image
-        source={require("../assets/icons/coin.png")}
+        source={imageMap.coin}
         style={styles.coin}
         resizeMode="contain"
       />
@@ -28,36 +31,30 @@ export default function CoinBadge({
   );
 }
 
-import { Theme } from "../constants/theme";
-
 const styles = StyleSheet.create({
   container: {
-    height: 30,
+    width: 78,
+    height: 36,
 
-    minWidth: 56,
-
-    paddingHorizontal: Theme.spacing.sm,
-
-    borderRadius: Theme.radius.lg,
-
-    backgroundColor: Theme.colors.card,
+    backgroundColor: Theme.colors.cardDark,
+    borderRadius: Theme.radius.xl,
 
     flexDirection: "row",
-    alignItems: "center",
     justifyContent: "center",
+    alignItems: "center",
   },
 
   coin: {
-    width: 16,
-    height: 16,
+    width: 18,
+    height: 18,
 
     marginRight: Theme.spacing.xs,
   },
 
   text: {
-    color: Theme.colors.white,
+    color: Theme.colors.coin,
 
-    fontSize: Theme.fontSizes.md,
+    fontSize: Theme.fontSizes.lg,
 
     fontWeight: "700",
   },

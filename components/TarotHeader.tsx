@@ -6,9 +6,9 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 
+import CoinBadge from "./CoinBadge";
 import { Theme } from "../constants/theme";
 
 interface TarotHeaderProps {
@@ -20,40 +20,35 @@ export default function TarotHeader({
 }: TarotHeaderProps) {
   const router = useRouter();
 
-  return (
-    <View style={styles.container}>
+ return (
+  <View style={styles.container}>
+    <View style={styles.left}>
       <TouchableOpacity
         style={styles.backButton}
         activeOpacity={0.8}
         onPress={() => router.back()}
       >
-        <Ionicons
-          name="chevron-back"
-          size={22}
-          color={Theme.colors.white}
-        />
-      </TouchableOpacity>
+        <Text style={styles.backIcon}>←</Text>
 
+        <Text style={styles.backText}>
+          Geri Dön
+        </Text>
+      </TouchableOpacity>
+    </View>
+
+    <View style={styles.center}>
       <Image
         source={require("../assets/logo/tarot-logo.png")}
         style={styles.logo}
         resizeMode="contain"
       />
-
-      <View style={styles.coinBox}>
-        <Image
-          source={require("../assets/icons/coin.png")}
-          style={styles.coin}
-          resizeMode="contain"
-        />
-
-        <Text style={styles.coinText}>
-          {coinBalance}
-        </Text>
-      </View>
     </View>
-  );
-}
+
+    <View style={styles.right}>
+      <CoinBadge balance={coinBalance} />
+    </View>
+  </View>
+);}
 
 const styles = StyleSheet.create({
   container: {
@@ -61,52 +56,45 @@ const styles = StyleSheet.create({
   marginBottom: Theme.spacing.xxl,
 
   flexDirection: "row",
-  justifyContent: "space-between",
   alignItems: "center",
 },
 
   backButton: {
-    width: 42,
-    height: 42,
-
-    borderRadius: Theme.radius.full,
-
-    backgroundColor: Theme.colors.cardDark,
-
-    justifyContent: "center",
+    flexDirection: "row",
     alignItems: "center",
+  },
+
+  backIcon: {
+    color: Theme.colors.white,
+    fontSize: Theme.fontSizes.xl,
+    marginRight: Theme.spacing.xs,
+  },
+
+  backText: {
+    color: Theme.colors.white,
+    fontSize: Theme.fontSizes.md,
+    fontWeight: "600",
   },
 
   logo: {
     width: 110,
     height: 42,
   },
+  left: {
+  flex: 1,
+  alignItems: "flex-start",
+  justifyContent: "center",
+},
 
-  coinBox: {
-    width: 78,
-    height: 36,
+center: {
+  flex: 1,
+  alignItems: "center",
+  justifyContent: "center",
+},
 
-    backgroundColor: Theme.colors.cardDark,
-
-    borderRadius: Theme.radius.xl,
-
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-  coin: {
-    width: 18,
-    height: 18,
-
-    marginRight: Theme.spacing.xs,
-  },
-
-  coinText: {
-    color: Theme.colors.coin,
-
-    fontSize: Theme.fontSizes.lg,
-
-    fontWeight: "700",
-  },
+right: {
+  flex: 1,
+  alignItems: "flex-end",
+  justifyContent: "center",
+},
 });

@@ -6,7 +6,6 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 import Header from "../components/Header";
 import QuoteCard from "../components/QuoteCard";
@@ -17,23 +16,16 @@ import ActivityRow from "../components/ActivityRow";
 import TabBar from "../components/TabBar";
 
 import data from "../data/falabak-data.json";
-import { imageMap } from "../data/imageMap";
 import { Theme } from "../constants/theme";
+import { imageMap } from "../data/imageMap"; 
+import { SafeAreaView } from "react-native-safe-area-context";
+import { useCoin } from "../contexts/CoinContext";
 
 export default function HomeScreen() {
+  const { coinBalance } = useCoin();
   const tabs = data.navTabs.map((tab) => ({
     ...tab,
     icon: imageMap[tab.icon],
-  }));
-
-  const fortuneTypes = data.fortuneTypes.map((item) => ({
-    ...item,
-    icon: imageMap[item.icon],
-  }));
-
-  const activities = data.activities.map((item) => ({
-    ...item,
-    icon: imageMap[item.icon],
   }));
 
   return (
@@ -42,34 +34,34 @@ export default function HomeScreen() {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.content}
       >
-        <Header
-          userName={data.user.firstName}
-          coinBalance={data.user.coinBalance}
-        />
+       <Header
+  userName={data.user.firstName}
+  coinBalance={coinBalance}
+/>
 
         <QuoteCard
-          text={data.dailyQuote.text}
-          author={data.dailyQuote.author}
-          image={data.dailyQuote.image}
-        />
+  text={data.dailyQuote.text}
+  author={data.dailyQuote.author}
+  image={data.dailyQuote.image}
+/>
 
         <PromotionCard
-          discountPercent={data.promotion.discountPercent}
-          countdownDurationSeconds={
-            data.promotion.countdownDurationSeconds
-          }
-        />
+  discountPercent={data.promotion.discountPercent}
+  countdownDurationSeconds={
+    data.promotion.countdownDurationSeconds
+  }
+/>
 
         <Text style={styles.sectionTitle}>
           Fal Türlerimiz
         </Text>
 
         <View style={styles.grid}>
-          {fortuneTypes.map((item) => (
+          {data.fortuneTypes.map((item) => (
             <FortuneCard
               key={item.id}
               title={item.title}
-              icon={item.icon}
+              icon={imageMap[item.icon]}
               badge={item.badge}
               route={item.route}
               cost={item.cost}
@@ -97,11 +89,11 @@ export default function HomeScreen() {
         </Text>
 
         <View style={styles.activityContainer}>
-          {activities.map((item) => (
+          {data.activities.map((item) => (
             <ActivityRow
               key={item.id}
               title={item.title}
-              icon={item.icon}
+              icon={imageMap[item.icon]}
             />
           ))}
 
@@ -127,15 +119,18 @@ const styles = StyleSheet.create({
   },
 
   content: {
-    paddingBottom: 100,
+    paddingBottom: Theme.spacing.xxl,
   },
 
   sectionTitle: {
     color: Theme.colors.white,
+
     fontSize: Theme.fontSizes.xxl,
+
     fontWeight: "700",
 
     marginHorizontal: Theme.spacing.screen,
+
     marginTop: Theme.spacing.xxl,
     marginBottom: Theme.spacing.lg,
   },
@@ -146,6 +141,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
 
     paddingHorizontal: Theme.spacing.screen,
+
     marginBottom: Theme.spacing.sm,
   },
 
@@ -154,11 +150,13 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
 
     marginHorizontal: Theme.spacing.screen,
+
     marginBottom: Theme.spacing.md,
   },
 
   activityContainer: {
     marginHorizontal: Theme.spacing.screen,
+
     marginBottom: Theme.spacing.xl,
   },
 
@@ -179,7 +177,7 @@ const styles = StyleSheet.create({
   viewAllText: {
     color: Theme.colors.white,
 
-    fontSize: 15,
+    fontSize: Theme.fontSizes.md,
 
     fontWeight: "700",
   },

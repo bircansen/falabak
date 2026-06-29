@@ -8,6 +8,10 @@ export const imageMap: Record<string, number> = {
   send: require("../assets/icons/send.png"),
   moon: require("../assets/icons/moon.png"),
   user: require("../assets/icons/user.png"),
+  
+   // Header
+  coin: require("../assets/icons/coin.png"),
+  logo: require("../assets/images/start.png"),
 
   // Fortune Types
   "coffee-cup": require("../assets/icons/coffee.png"),
@@ -28,17 +32,16 @@ export const imageMap: Record<string, number> = {
   "assets/characters/luna.png": require("../assets/characters/luna.png"),
 
   // Tarot Cards
- // Tarot Cards
-"assets/cards/00-the-fool.png": require("../assets/cards/tarot_01.png"),
-"assets/cards/01-the-magician.png": require("../assets/cards/tarot_02.png"),
-"assets/cards/02-the-high-priestess.png": require("../assets/cards/tarot_03.png"),
-"assets/cards/03-the-empress.png": require("../assets/cards/tarot_04.png"),
-"assets/cards/04-the-emperor.png": require("../assets/cards/tarot_05.png"),
-"assets/cards/05-the-hierophant.png": require("../assets/cards/tarot_06.png"),
-"assets/cards/06-the-lovers.png": require("../assets/cards/tarot_07.png"),
-"assets/cards/07-the-chariot.png": require("../assets/cards/tarot_08.png"),
-"assets/cards/08-strength.png": require("../assets/cards/tarot_09.png"),
-"assets/cards/09-the-hermit.png": require("../assets/cards/tarot_10.png"),
-"assets/cards/10-wheel-of-fortune.png": require("../assets/cards/tarot_11.png"),
-"assets/cards/11-justice.png": require("../assets/cards/tarot_12.png"),
+  "the-fool": require("../assets/cards/tarot_01.png"),
+  "the-magician": require("../assets/cards/tarot_02.png"),
+  "the-high-priestess": require("../assets/cards/tarot_03.png"),
+  "the-empress": require("../assets/cards/tarot_04.png"),
+  "the-emperor": require("../assets/cards/tarot_05.png"),
+  "the-hierophant": require("../assets/cards/tarot_06.png"),
+  "the-lovers": require("../assets/cards/tarot_07.png"),
+  "the-chariot": require("../assets/cards/tarot_08.png"),
+  strength: require("../assets/cards/tarot_09.png"),
+  "the-hermit": require("../assets/cards/tarot_10.png"),
+  "wheel-of-fortune": require("../assets/cards/tarot_11.png"),
+  justice: require("../assets/cards/tarot_12.png"),
 };
