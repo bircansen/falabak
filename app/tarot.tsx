@@ -29,6 +29,8 @@ import ArcSlider from "../animations/ArcSlider";
 
 import TarotSkeleton from "../components/TarotSkeleton";
 
+import * as Haptics from "expo-haptics";
+
 import useTarot, {
   TarotCard,
 } from "../hooks/useTarot";
@@ -79,6 +81,14 @@ export default function TarotScreen() {
     () => selectedCards.map((c) => c.id),
     [selectedCards]
   );
+
+  const handleSelectCard = useCallback(
+  async (card: TarotCard) => {
+    await Haptics.selectionAsync();
+    pickCard(card);
+  },
+  [pickCard]
+);
 
   const handleReveal = useCallback(async () => {
     if (loadingReading) return;
@@ -140,11 +150,11 @@ export default function TarotScreen() {
           </View>
 
           <TarotFan
-            cards={cards}
-            selectedCards={selectedIds}
-            onSelect={pickCard}
-            disabled={loadingReading}
-          />
+  cards={cards}
+  selectedCards={selectedIds}
+  onSelect={handleSelectCard}
+  disabled={loadingReading}
+/>
 
           <ArcSlider />
 
