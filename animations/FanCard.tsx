@@ -1,5 +1,14 @@
-import React, { memo, useEffect } from "react";
-import { Image, Pressable, StyleSheet } from "react-native";
+import React, {
+  memo,
+  useEffect,
+  forwardRef,
+} from "react";
+import {
+  Image,
+  Pressable,
+  StyleSheet,
+} from "react-native";
+
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -20,59 +29,79 @@ interface Props {
   onPress?: () => void;
 }
 
-function FanCard({
-  image,
-  angle,
-  x,
-  y,
-  scale,
-  selected,
-  disabled = false,
-  onPress,
-}: Props) {
-  const scaleValue = useSharedValue(1);
-  const opacity = useSharedValue(1);
+const FanCard = forwardRef<any, Props>(
+  (
+    {
+      image,
+      angle,
+      x,
+      y,
+      scale,
+      selected,
+      disabled = false,
+      onPress,
+    },
+    ref
+  ) => {
+    const scaleValue = useSharedValue(1);
+    const opacity = useSharedValue(1);
 
-  useEffect(() => {
-    scaleValue.value = withSpring(selected ? 0.9 : 1, {
-      damping: 14,
-      stiffness: 140,
-    });
+    useEffect(() => {
+      scaleValue.value = withSpring(
+        selected ? 0.88 : 1,
+        {
+          damping: 14,
+          stiffness: 140,
+        }
+      );
 
-    opacity.value = withTiming(selected ? 0.25 : 1, {
-      duration: 250,
-    });
-  }, [selected]);
+      opacity.value = withTiming(
+        selected ? 0 : 1,
+        {
+          duration: 180,
+        }
+      );
+    }, [selected]);
 
-  const animatedStyle = useAnimatedStyle(() => ({
-    opacity: opacity.value,
-    transform: [
-      { translateX: x },
-      { translateY: y },
-      { rotate: `${angle}deg` },
-      { scale: scaleValue.value * scale },
-    ],
-  }));
+    const animatedStyle = useAnimatedStyle(() => ({
+      opacity: opacity.value,
+      transform: [
+        { translateX: x },
+        { translateY: y },
+        { rotate: `${angle}deg` },
+        {
+          scale: scaleValue.value * scale,
+        },
+      ],
+    }));
 
-  return (
-    <Animated.View style={[styles.card, animatedStyle]}>
-      <Pressable
-        style={styles.pressable}
-        disabled={disabled}
-        onPress={onPress}
+    return (
+      <Animated.View
+        ref={ref}
+        collapsable={false}
+        style={[styles.card, animatedStyle]}
       >
-        <Image
-          source={image}
-          style={styles.image}
-          resizeMode="cover"
-          fadeDuration={0}
-        />
-      </Pressable>
-    </Animated.View>
-  );
-}
+        <Pressable
+          style={styles.pressable}
+          disabled={disabled}
+          onPress={onPress}
+        >
+          <Image
+            source={image}
+            style={styles.image}
+            resizeMode="stretch"
+            fadeDuration={0}
+          />
+        </Pressable>
+      </Animated.View>
+    );
+  }
+);
 
-function areEqual(prev: Props, next: Props) {
+function areEqual(
+  prev: Props,
+  next: Props
+) {
   return (
     prev.selected === next.selected &&
     prev.disabled === next.disabled &&
@@ -93,7 +122,6 @@ const styles = StyleSheet.create({
     width: 78,
     height: 126,
 
-    borderRadius: 0,
     overflow: "hidden",
 
     shadowColor: Theme.colors.shadow,
@@ -114,7 +142,5 @@ const styles = StyleSheet.create({
   image: {
     width: "100%",
     height: "100%",
-
-    borderRadius: 0,
   },
 });

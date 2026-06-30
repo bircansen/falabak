@@ -2,9 +2,11 @@ import React, { useEffect } from "react";
 import { Image, StyleSheet } from "react-native";
 
 import Animated, {
-  useSharedValue,
+  Easing,
   useAnimatedStyle,
+  useSharedValue,
   withTiming,
+  runOnJS,
 } from "react-native-reanimated";
 
 import { Theme } from "../constants/theme";
@@ -20,6 +22,8 @@ interface Props {
   toX: number;
   toY: number;
 
+  fromAngle?: number;
+
   onFinish?: () => void;
 }
 
@@ -30,57 +34,102 @@ export default function FlyingCard({
   fromY,
   toX,
   toY,
+  fromAngle = 0,
   onFinish,
 }: Props) {
-  const x = useSharedValue(fromX);
-  const y = useSharedValue(fromY);
-  const scale = useSharedValue(1);
+  const progress = useSharedValue(0);
+  const rotation = useSharedValue(fromAngle);
   const opacity = useSharedValue(0);
+  const scale = useSharedValue(1);
+  
 
   useEffect(() => {
-    if (!visible) return;
+    if (!visible) {
+      opacity.value = 0;
+      progress.value = 0;
+      return;
+    }
 
+    progress.value = 0;
+    rotation.value = fromAngle;
     opacity.value = 1;
+    scale.value = 1;
 
-    x.value = withTiming(toX, { duration: 500 });
-
-    y.value = withTiming(
-      toY,
-      { duration: 500 },
+    rotation.value = withTiming(
+  rotation.value > 0
+    ? -4
+    : 4,
+  {
+    duration:220,
+  },
+  () => {
+    rotation.value = withTiming(0,{
+      duration:330,
+    });
+  }
+);
+   scale.value = withTiming(
+  1.06,
+  {
+    duration:220,
+  },
+  () => {
+    scale.value = withTiming(0.9,{
+      duration:330,
+    });
+  }
+);
+    progress.value = withTiming(
+  1,
+  {
+    duration:400,
+    easing: Easing.out(Easing.exp),
+  },
       (finished) => {
         if (finished && onFinish) {
-          onFinish();
+          runOnJS(onFinish)();
         }
       }
     );
+  }, [
+    visible,
+    fromX,
+    fromY,
+    toX,
+    toY,
+    fromAngle,
+    onFinish,
+  ]);
 
-    scale.value = withTiming(0.9, {
-      duration: 500,
-    });
-  }, [visible]);
+  const animatedStyle = useAnimatedStyle(() => {
+    const x = fromX + (toX - fromX) * progress.value;
 
-  const style = useAnimatedStyle(() => ({
-    opacity: opacity.value,
-    transform: [
-      {
-        translateX: x.value,
-      },
-      {
-        translateY: y.value,
-      },
-      {
-        scale: scale.value,
-      },
-    ],
-  }));
+    const y =
+      fromY +
+      (toY - fromY) * progress.value -
+      Math.sin(progress.value * Math.PI) * 95
 
-  if (!visible) return null;
+    return {
+      opacity: opacity.value,
+      transform: [
+        { translateX: x },
+        { translateY: y },
+        { rotate: `${rotation.value}deg` },
+        { scale: scale.value },
+      ],
+    };
+  });
 
   return (
-    <Animated.View style={[styles.container, style]}>
+    <Animated.View
+      pointerEvents="none"
+      style={[styles.container, animatedStyle]}
+    >
       <Image
         source={image}
         style={styles.image}
+        resizeMode="cover"
+        fadeDuration={0}
       />
     </Animated.View>
   );
@@ -88,18 +137,22 @@ export default function FlyingCard({
 
 const styles = StyleSheet.create({
   container: {
-    position: "absolute",
+  position: "absolute",
 
-    width: 90,
-    height: 145,
+  top: 0,
+  left: 0,
 
-    zIndex: 999,
-  },
+  width: 78,
+  height: 126,
+
+  zIndex: 9999,
+
+  elevation: 999,
+},
 
   image: {
     width: "100%",
     height: "100%",
-
-    borderRadius: Theme.radius.xl,
+    borderRadius: Theme.radius.sm,
   },
 });
