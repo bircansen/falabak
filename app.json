@@ -1,21 +1,29 @@
 {
   "expo": {
-    "name": "new",
-    "slug": "new",
+    "name": "FalaBak",
+    "slug": "falabak",
     "version": "1.0.0",
     "orientation": "portrait",
-    "scheme": "new",
+    "scheme": "falabak",
     "userInterfaceStyle": "automatic",
     "ios": {
       "supportsTablet": true
     },
-    "android": {},
+    "android": {
+      "package": "com.bircansen.falabak"
+    },
     "web": {
       "output": "static"
     },
     "plugins": [
       "expo-router",
       "expo-asset"
-    ]
+    ],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "32a718bc-3e8f-496c-9be3-9c6443a6d344"
+      }
+    }
   }
 }
