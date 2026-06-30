@@ -42,11 +42,10 @@ export default function BalanceBar({
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   card: {
     flex: 1,
-    height: 82,
+    height: 74,
 
     marginHorizontal: Theme.spacing.xs,
 
@@ -58,31 +57,31 @@ const styles = StyleSheet.create({
 
   title: {
     color: Theme.colors.white,
-    fontSize: Theme.fontSizes.xl,
-    fontWeight: "700",
+    fontSize: Theme.fontSizes.md,
+    fontWeight: Theme.typography.medium,
   },
 
   sub: {
     color: Theme.colors.white,
     opacity: 0.9,
-    marginTop: 2,
-    fontSize: Theme.fontSizes.sm,
+    marginTop: Theme.spacing.xxs,
+    fontSize: Theme.fontSizes.xs,
   },
 
   percentBox: {
-    marginTop: 14,
+    marginTop: Theme.spacing.sm,
 
-    backgroundColor: Theme.colors.overlay,
+    backgroundColor: Theme.colors.whiteOverlayLight,
 
-    paddingHorizontal: Theme.spacing.lg,
-    paddingVertical: 5,
+    paddingHorizontal: Theme.spacing.md,
+    paddingVertical: Theme.spacing.xs,
 
     borderRadius: Theme.radius.md,
   },
 
   percent: {
     color: Theme.colors.white,
-    fontWeight: "700",
-    fontSize: Theme.fontSizes.sm,
+    fontWeight: Theme.typography.medium,
+    fontSize: Theme.fontSizes.xs,
   },
 });

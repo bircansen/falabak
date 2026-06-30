@@ -219,7 +219,7 @@ const styles = StyleSheet.create({
     marginTop: Theme.spacing.sm,
     color: Theme.colors.text,
     fontSize: Theme.fontSizes.md,
-    fontWeight: "700",
+    fontWeight: Theme.typography.bold,
     textAlign: "center",
   },
 });

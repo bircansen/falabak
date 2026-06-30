@@ -56,6 +56,6 @@ const styles = StyleSheet.create({
 
     fontSize: Theme.fontSizes.lg,
 
-    fontWeight: "700",
+    fontWeight: Theme.typography.bold,
   },
 });

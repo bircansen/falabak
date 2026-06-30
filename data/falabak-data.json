@@ -11,8 +11,9 @@
     "id": "u_001",
     "name": "Ahmet Han Demir",
     "firstName": "Ahmet Han",
+    
     "avatar": "assets/avatars/ahmet.png",
-    "coinBalance": 20,
+    "coinBalance": 40,
     "memberSince": "2025-11-12"
   },
 
@@ -135,10 +136,15 @@
       "arcana": "Major",
       "image": "assets/cards/00-the-fool.png",
       "cardBack": "assets/cards/back.png",
-      "keywords": ["yeni başlangıç", "masumiyet", "özgürlük", "macera"],
-      "uprightMeaning": "Yeni bir yolculuğun eşiğindesin. Cesaret ve açıklıkla atılan adımlar seni beklenmedik fırsatlara götürebilir.",
-      "reversedMeaning": "Acelecilik ve düşünmeden alınan riskler. Bir an durup yön belirleme zamanı.",
-      "description": "Joker, sınırsız potansiyeli ve sayfanın yeniden yazılmasını temsil eder."
+     "keywords": [
+      "değişim",
+  "cesaret",
+  "ilerleme",
+  "denge"
+    ],
+    "uprightMeaning": "Hayatında yeni bir kapı aralanıyor. Cesur kararlar almak seni beklediğinden daha güzel sonuçlara ulaştırabilir.",
+"reversedMeaning": "Kararsızlık ve geçmişe bağlı kalmak ilerlemeni yavaşlatabilir. Değişime direnmek yerine onu kabullenmeye çalış.",
+"description": "Her sonun yeni bir başlangıca dönüştüğünü ve değişimin büyümenin en önemli parçası olduğunu simgeler."
     },
     {
       "id": "the-magician",
@@ -148,11 +154,17 @@
       "arcana": "Major",
       "image": "assets/cards/01-the-magician.png",
       "cardBack": "assets/cards/back.png",
-      "keywords": ["yetenek", "irade", "yaratım", "güç"],
-      "uprightMeaning": "Elindeki tüm araçlara sahipsin; niyetini eyleme dönüştürme gücü sende.",
-      "reversedMeaning": "Dağılan odak veya yeteneklerin yanlış yönde kullanımı. Niyetini netleştir.",
-      "description": "Büyücü, düşünce ile gerçeklik arasındaki köprüdür."
-    },
+      "keywords": [
+      "denge",
+      "sabır",
+      "gelişim",
+      "kararlılık"
+    ],
+    "uprightMeaning": "Sabır gösterdiğin konuda büyüme başlayacak. Acele etmeden ilerlemek başarı getirir.",
+    "reversedMeaning": "Gelişimi zorlamak yerine sürece güvenmelisin. Sabırsızlık ilerlemeni engelleyebilir.",
+    "description": "En zor şartlarda bile yaşamın devam ettiğini simgeler."
+  },
+
     {
       "id": "the-high-priestess",
       "number": 2,
@@ -161,11 +173,17 @@
       "arcana": "Major",
       "image": "assets/cards/02-the-high-priestess.png",
       "cardBack": "assets/cards/back.png",
-      "keywords": ["sezgi", "sır", "bilinçaltı", "iç ses"],
-      "uprightMeaning": "İç sesini dinle. Cevaplar dışarıda değil, sezgilerinde gizli.",
-      "reversedMeaning": "Sezgilerini görmezden gelmek veya yüzeysel kalmak. Sessizliğe kulak ver.",
-      "description": "Azize, görünmeyen bilginin ve iç dünyanın bekçisidir."
-    },
+      "keywords": [
+      "başlangıç",
+      "potansiyel",
+      "umut",
+      "fırsat"
+    ],
+    "uprightMeaning": "Yeni bir başlangıç seni bekliyor. Küçük görünen bir fikir veya fırsat zamanla büyük başarılara dönüşebilir.",
+    "reversedMeaning": "Fırsatları kaçırma, kararsızlık nedeniyle ilk adımı geciktirme. Cesaretini toplama zamanı.",
+    "description": "Her büyük başarının küçük bir başlangıçla doğmasını hatırlatır."
+  },
+
     {
       "id": "the-empress",
       "number": 3,
@@ -174,11 +192,16 @@
       "arcana": "Major",
       "image": "assets/cards/03-the-empress.png",
       "cardBack": "assets/cards/back.png",
-      "keywords": ["bereket", "üretkenlik", "şefkat", "doğallık"],
-      "uprightMeaning": "Bolluk ve yaratıcılık dönemi. Besle, büyüt; emek verdiğin şey çiçek açıyor.",
-      "reversedMeaning": "Kendine bakımı ihmal etmek veya yaratıcılığın tıkanması.",
-      "description": "İmparatoriçe, doğurganlığın ve şefkatli büyümenin sembolü."
-    },
+      "keywords": [
+      "istikrar",
+      "güven",
+      "sağlam temel",
+      "büyüme"
+    ],
+    "uprightMeaning": "Attığın temeller sağlamlaşıyor. Emek verdiğin konu uzun vadede sana güven sağlayacak.",
+    "reversedMeaning": "Planlarını gözden geçir. Sağlam olmayan temeller ileride sorun yaratabilir.",
+    "description": "Güçlü yapıların ve kalıcılığın sembolüdür."
+  },
     {
       "id": "the-emperor",
       "number": 4,
@@ -187,11 +210,17 @@
       "arcana": "Major",
       "image": "assets/cards/04-the-emperor.png",
       "cardBack": "assets/cards/back.png",
-      "keywords": ["otorite", "düzen", "istikrar", "disiplin"],
-      "uprightMeaning": "Yapı kurma ve liderlik zamanı. Kararlılık ve disiplin sağlam temeller atar.",
-      "reversedMeaning": "Aşırı kontrol veya katı kurallar. Esnemeye yer aç.",
-      "description": "İmparator, düzenin ve sağlam temellerin gücüdür."
-    },
+      "keywords": [
+      "fedakârlık",
+      "paylaşım",
+      "inanç",
+      "topluluk"
+    ],
+    "uprightMeaning": "Birlikten güç doğuyor. Yardımlaşma ve paylaşım sayesinde zor görünen bir konu kolaylaşabilir.",
+    "reversedMeaning": "Başkalarının onayına fazla ihtiyaç duyuyor olabilirsin. Kendi değerini başkalarının kararlarına bırakma.",
+    "description": "Ortak niyetlerin ve birlikte hareket etmenin gücünü temsil eder."
+  },
+
     {
       "id": "the-hierophant",
       "number": 5,
@@ -200,11 +229,17 @@
       "arcana": "Major",
       "image": "assets/cards/05-the-hierophant.png",
       "cardBack": "assets/cards/back.png",
-      "keywords": ["gelenek", "bilgelik", "rehberlik", "inanç"],
-      "uprightMeaning": "Bir öğretmen, gelenek ya da kurumdan gelen rehberlik faydalı olabilir.",
-      "reversedMeaning": "Kalıpları sorgulama ve kendi yolunu çizme isteği.",
-      "description": "Aziz, aktarılan bilgeliğin ve manevi rehberliğin temsilcisi."
-    },
+      "keywords": [
+      "denge",
+      "karar",
+      "sezgi",
+      "dönüşüm"
+    ],
+    "uprightMeaning": "Hayatındaki önemli bir seçim yaklaşırken sezgilerin sana doğru yolu gösterecek. İç sesini dinlemek fayda sağlayacak.",
+    "reversedMeaning": "Korkuların veya dış etkiler kararlarını gölgeliyor olabilir. Karar vermeden önce sakinleş.",
+    "description": "Yeni ihtimalleri temsil eder."
+  },
+
     {
       "id": "the-lovers",
       "number": 6,
@@ -213,11 +248,17 @@
       "arcana": "Major",
       "image": "assets/cards/06-the-lovers.png",
       "cardBack": "assets/cards/back.png",
-      "keywords": ["birliktelik", "uyum", "seçim", "değer"],
-      "uprightMeaning": "Kalpten bir bağlantı ya da önemli bir seçim. Değerlerinle uyumlu olanı seç.",
-      "reversedMeaning": "Uyumsuzluk veya kararsızlık. Neyin senin için gerçekten önemli olduğunu düşün.",
-      "description": "Aşıklar, bağlar ve bilinçli seçimler kartıdır."
-    },
+     "keywords": [
+      "sabır",
+      "bekleyiş",
+      "emek",
+      "hasat"
+    ],
+    "uprightMeaning": "Uzun süredir emek verdiğin konu sonuç vermeye çok yakın. Biraz daha sabır göstermelisin.",
+    "reversedMeaning": "Beklemek seni yoruyor olabilir ancak acele kararlar kazanımlarını azaltabilir.",
+    "description": "Emeğin karşılığını bekleyen herkesi simgeler."
+  },
+
     {
       "id": "the-chariot",
       "number": 7,
@@ -226,11 +267,17 @@
       "arcana": "Major",
       "image": "assets/cards/07-the-chariot.png",
       "cardBack": "assets/cards/back.png",
-      "keywords": ["irade", "zafer", "kararlılık", "kontrol"],
-      "uprightMeaning": "Kararlı duruş ve odak seni zafere götürür. Dizginleri elinde tut.",
-      "reversedMeaning": "Dağılan yön veya kontrol kaybı. Önceliğini yeniden belirle.",
-      "description": "Savaş Arabası, irade gücüyle ileri atılmayı simgeler."
-    },
+      "keywords": [
+      "düzen",
+      "ritim",
+      "odak",
+      "istikrar"
+    ],
+    "uprightMeaning": "Hayatında düzen kurdukça başarı hızlanacak. Küçük ama sürekli adımlar büyük sonuçlar doğuracak.",
+    "reversedMeaning": "Dağınıklık ve plansızlık enerjini tüketebilir. Önceliklerini yeniden belirle.",
+    "description": "Yaşamın ritmini ve doğal döngüleri temsil eder."
+  },
+
     {
       "id": "strength",
       "number": 8,
@@ -239,11 +286,17 @@
       "arcana": "Major",
       "image": "assets/cards/08-strength.png",
       "cardBack": "assets/cards/back.png",
-      "keywords": ["iç güç", "cesaret", "sabır", "şefkat"],
-      "uprightMeaning": "Gerçek güç nazik kararlılıktır. Sabır ve şefkatle zorlukları yatıştırırsın.",
-      "reversedMeaning": "Özgüven eksikliği veya tükenmişlik. Kendine şefkatle yaklaş.",
-      "description": "Güç, kaba kuvveti değil iç dengeyi ve cesareti temsil eder."
-    },
+      "keywords": [
+      "bilgelik",
+      "içgörü",
+      "koruma",
+      "hazırlık"
+    ],
+    "uprightMeaning": "Geçmiş deneyimlerin sana yol gösteriyor. Sabırlı davranırsan doğru zamanı yakalayacaksın.",
+    "reversedMeaning": "Geçmişte yaşanan hayal kırıklıkları yeni fırsatları görmeni engelliyor olabilir. Kendine güven.",
+    "description": "Sessiz gözlem ve derin bilgeliğin sembolüdür."
+  },
+
     {
       "id": "the-hermit",
       "number": 9,
@@ -252,11 +305,17 @@
       "arcana": "Major",
       "image": "assets/cards/09-the-hermit.png",
       "cardBack": "assets/cards/back.png",
-      "keywords": ["iç gözlem", "yalnızlık", "arayış", "bilgelik"],
-      "uprightMeaning": "Geri çekilip iç dünyana dönme zamanı. Cevap sessizlikte gizli.",
-      "reversedMeaning": "Aşırı izolasyon veya yön kaybı. Dengeli bir geri dönüş için kapını arala.",
-      "description": "Ermiş, iç ışığı ve bireysel arayışı simgeler."
-    },
+      "keywords": [
+      "tamamlanma",
+      "bereket",
+      "başarı",
+      "bolluk"
+    ],
+    "uprightMeaning": "Uzun süredir emek verdiğin süreç tamamlanıyor. Emeklerinin karşılığını alma zamanı.",
+    "reversedMeaning": "Başarıya çok yakınken motivasyonunu kaybetme. Son adımlar en önemli adımlardır.",
+    "description": "Tamamlanan bir döngüyü ve bereketi simgeler."
+  },
+
     {
       "id": "wheel-of-fortune",
       "number": 10,
@@ -265,11 +324,17 @@
       "arcana": "Major",
       "image": "assets/cards/10-wheel-of-fortune.png",
       "cardBack": "assets/cards/back.png",
-      "keywords": ["dönüş", "şans", "döngü", "değişim"],
-      "uprightMeaning": "Talihin dönmeye başladığı bir eşik. Akışa güven, değişim lehine işliyor.",
-      "reversedMeaning": "Tıkanan döngü veya kötü zamanlama. Sabret, çarkın dönmesini bekle.",
-      "description": "Kader Çarkı, yaşamın döngülerini ve değişimi temsil eder."
-    },
+     "keywords": [
+      "filizlenme",
+      "umut",
+      "yenilenme",
+      "yaşam"
+    ],
+    "uprightMeaning": "Hayatında yepyeni bir sayfa açılıyor. Küçük görünen başlangıçlar büyük değişimlerin habercisi olabilir.",
+    "reversedMeaning": "Korkuların seni ilk adımı atmaktan alıkoyabilir. Potansiyelini erteleme.",
+    "description": "Yaşamın her koşulda yeniden doğabileceğini anlatır."
+  },
+
     {
       "id": "justice",
       "number": 11,
@@ -278,10 +343,15 @@
       "arcana": "Major",
       "image": "assets/cards/11-justice.png",
       "cardBack": "assets/cards/back.png",
-      "keywords": ["adalet", "denge", "gerçek", "sorumluluk"],
-      "uprightMeaning": "Hakkaniyet ve dürüstlük öne çıkıyor. Attığın her adımın sonucu adildir.",
-      "reversedMeaning": "Adaletsizlik hissi veya sorumluluktan kaçış. Dengeyi yeniden kur.",
-      "description": "Adalet; denge, gerçek ve eylemlerin sonuçları kartıdır."
-    }
+      "keywords": [
+      "gelişim",
+      "denge",
+      "umut",
+      "dayanıklılık"
+    ],
+    "uprightMeaning": "Büyüme sürecindesin. Attığın adımlar yavaş görünse de sağlam temeller üzerine kuruluyor.",
+    "reversedMeaning": "Sabırsız davranmak gelişimini yavaşlatabilir. Sürece güven ve istikrarını koru.",
+    "description": "Dengenin, uyumun ve geleceğe uzanan büyümenin sembolüdür."
+  }
   ]
 }

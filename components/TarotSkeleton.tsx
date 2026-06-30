@@ -127,18 +127,19 @@ const styles = StyleSheet.create({
 
   title: {
     color: Theme.colors.text,
-    fontSize: 18,
-    fontWeight: "700",
+    fontSize: Theme.typography.h3,
+    fontWeight: Theme.typography.bold,
     textAlign: "center",
   },
 
   subtitle: {
-    marginTop: Theme.spacing.xs ?? 6,
+    marginTop: Theme.spacing.xs,
     marginBottom: Theme.spacing.lg,
 
     color: Theme.colors.textSecondary,
     textAlign: "center",
-    fontSize: 14,
+    fontSize: Theme.fontSizes.md,
+    fontWeight: Theme.typography.regular,
   },
 
   card: {

@@ -52,10 +52,11 @@ export default function Header({
     </View>
 
     <View style={styles.welcome}>
-      <Text style={styles.welcomeText}>Hoş Geldin,</Text>
-
-      <Text style={styles.name}>{userName}</Text>
-    </View>
+  <Text style={styles.welcomeText}>
+    Hoş Geldin,{" "}
+    <Text style={styles.name}>{userName}</Text>
+  </Text>
+</View>
   </View>
 );}
 
@@ -67,14 +68,29 @@ const styles = StyleSheet.create({
   },
 
   topRow: {
-  flexDirection: "row",
-  alignItems: "center",
-},
+    flexDirection: "row",
+    alignItems: "center",
+  },
+
+  left: {
+    flex: 1,
+    alignItems: "flex-start",
+  },
+
+  center: {
+    flex: 1,
+    alignItems: "center",
+  },
+
+  right: {
+    flex: 1,
+    alignItems: "flex-end",
+  },
 
   iconButton: {
     width: 42,
     height: 42,
-    borderRadius: 21,
+    borderRadius: Theme.radius.full,
     backgroundColor: Theme.colors.card,
     justifyContent: "center",
     alignItems: "center",
@@ -93,8 +109,11 @@ const styles = StyleSheet.create({
 
   logo: {
     color: Theme.colors.white,
-    fontSize: 24,
-    fontWeight: "700",
+    fontSize: 25,
+    fontWeight: Theme.typography.regular,
+    lineHeight: 25,
+    letterSpacing: -0.75,
+    textAlign: "center",
   },
 
   welcome: {
@@ -103,27 +122,13 @@ const styles = StyleSheet.create({
 
   welcomeText: {
     color: Theme.colors.textSecondary,
-    fontSize: 16,
+    fontSize: Theme.fontSizes.lg,
+    fontWeight: Theme.typography.regular,
   },
 
   name: {
     color: Theme.colors.white,
-    fontSize: 28,
-    fontWeight: "700",
-    marginTop: Theme.spacing.xs,
+    fontSize: Theme.fontSizes.lg,
+    fontWeight: Theme.typography.bold,
   },
-  left: {
-  flex: 1,
-  alignItems: "flex-start",
-},
-
-center: {
-  flex: 1,
-  alignItems: "center",
-},
-
-right: {
-  flex: 1,
-  alignItems: "flex-end",
-},
-})
+});

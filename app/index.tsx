@@ -35,7 +35,7 @@ export default function HomeScreen() {
         contentContainerStyle={styles.content}
       >
        <Header
-  userName={data.user.firstName}
+  userName={data.user.name}
   coinBalance={coinBalance}
 />
 
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
 
     fontSize: Theme.fontSizes.xxl,
 
-    fontWeight: "700",
+    fontWeight: Theme.typography.bold,
 
     marginHorizontal: Theme.spacing.screen,
 
@@ -179,6 +179,6 @@ const styles = StyleSheet.create({
 
     fontSize: Theme.fontSizes.md,
 
-    fontWeight: "700",
+    fontWeight: Theme.typography.bold,
   },
 });

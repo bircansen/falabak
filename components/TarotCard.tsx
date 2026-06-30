@@ -85,11 +85,8 @@ const styles = StyleSheet.create({
 
   title: {
     color: Theme.colors.white,
-
     fontSize: Theme.fontSizes.sm,
-
-    fontWeight: "600",
-
+    fontWeight: Theme.typography.medium,
     textAlign: "center",
   },
 });

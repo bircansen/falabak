@@ -405,7 +405,7 @@ const styles = StyleSheet.create({
   selectTitle: {
     color: Theme.colors.white,
     fontSize: Theme.fontSizes.display,
-    fontWeight: "700",
+    fontWeight: Theme.typography.bold,
     letterSpacing: 0.3,
   },
 
@@ -445,7 +445,7 @@ const styles = StyleSheet.create({
   revealText: {
     color: Theme.colors.white,
     fontSize: Theme.fontSizes.lg,
-    fontWeight: "700",
+    fontWeight: Theme.typography.bold,
     letterSpacing: 0.4,
   },
 

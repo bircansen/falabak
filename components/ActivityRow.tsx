@@ -46,10 +46,10 @@ export default function ActivityRow({
 
       <View style={styles.arrowContainer}>
         <Ionicons
-          name="chevron-forward"
-          size={18}
-          color={Theme.colors.white}
-        />
+  name="arrow-forward"
+  size={20}
+  color={Theme.colors.arrowOverlay}
+/>
       </View>
     </TouchableOpacity>
   );
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   container: {
     height: 58,
     backgroundColor: Theme.colors.card,
-    borderRadius: 14,
+    borderRadius: Theme.radius.lg,
     borderWidth: 1,
     borderColor: Theme.colors.border,
 
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     flex: 1,
     color: Theme.colors.white,
     fontSize: Theme.fontSizes.lg,
-    fontWeight: "600",
+    fontWeight: Theme.typography.medium,
   },
 
   arrowContainer: {

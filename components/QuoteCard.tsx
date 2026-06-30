@@ -70,22 +70,22 @@ const styles = StyleSheet.create({
 
   title: {
     color: Theme.colors.quoteTitle,
-    fontSize: 11,
-    fontWeight: "500",
-    marginBottom: Theme.spacing.sm,
+    fontSize: Theme.fontSizes.xs,
+    fontWeight: Theme.typography.regular,
   },
 
   quote: {
     color: Theme.colors.white,
     fontSize: Theme.fontSizes.sm,
-    lineHeight: 20,
-    fontWeight: "500",
+    lineHeight: 18,
+    fontWeight: Theme.typography.regular,
   },
 
   author: {
     marginTop: Theme.spacing.sm,
     color: Theme.colors.quoteAuthor,
-    fontSize: 11,
+    fontSize: Theme.fontSizes.xs,
+    fontWeight: Theme.typography.regular,
   },
 
   circle: {
@@ -94,8 +94,8 @@ const styles = StyleSheet.create({
     top: -20,
     width: 160,
     height: 160,
-    borderRadius: 80,
-    backgroundColor: Theme.colors.overlayLight,
+    borderRadius: Theme.radius.full,
+    backgroundColor: Theme.colors.whiteOverlayLight,
   },
 
   circle2: {
@@ -104,8 +104,8 @@ const styles = StyleSheet.create({
     top: 20,
     width: 95,
     height: 95,
-    borderRadius: 48,
-    backgroundColor: Theme.colors.overlayLighter,
+    borderRadius: Theme.radius.full,
+    backgroundColor: Theme.colors.whiteOverlayLighter,
   },
 
   woman: {

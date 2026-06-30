@@ -102,10 +102,13 @@ const styles = StyleSheet.create({
   card: {
     flexDirection: "row",
     alignItems: "flex-start",
+
     backgroundColor: Theme.colors.card,
+
     borderRadius: Theme.radius.xl,
     padding: Theme.spacing.md,
     marginBottom: Theme.spacing.md,
+
     borderWidth: 1,
     borderColor: Theme.colors.border,
 
@@ -140,7 +143,7 @@ const styles = StyleSheet.create({
   position: {
     color: Theme.colors.text,
     fontSize: Theme.typography.body,
-    fontWeight: "700",
+    fontWeight: Theme.typography.bold,
   },
 
   badge: {
@@ -152,13 +155,13 @@ const styles = StyleSheet.create({
   badgeText: {
     color: Theme.colors.white,
     fontSize: Theme.fontSizes.xs,
-    fontWeight: "700",
+    fontWeight: Theme.typography.bold,
   },
 
   name: {
     color: Theme.colors.text,
     fontSize: Theme.fontSizes.xl,
-    fontWeight: "700",
+    fontWeight: Theme.typography.bold,
     marginBottom: Theme.spacing.xs,
   },
 
@@ -166,5 +169,6 @@ const styles = StyleSheet.create({
     color: Theme.colors.textSecondary,
     fontSize: Theme.fontSizes.md,
     lineHeight: 22,
+    fontWeight: Theme.typography.regular,
   },
 });

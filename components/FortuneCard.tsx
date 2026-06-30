@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
   badgeText: {
     color: Theme.colors.white,
     fontSize: Theme.fontSizes.xs,
-    fontWeight: "700",
+    fontWeight: Theme.typography.bold,
   },
 
   icon: {
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: Theme.spacing.xs,
     color: Theme.colors.text,
     fontSize: Theme.fontSizes.sm,
-    fontWeight: "600",
+    fontWeight: Theme.typography.medium,
     textAlign: "center",
     lineHeight: 18,
     minHeight: 36,

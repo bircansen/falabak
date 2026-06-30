@@ -10,6 +10,7 @@ import { useRouter } from "expo-router";
 
 import CoinBadge from "./CoinBadge";
 import { Theme } from "../constants/theme";
+import { Ionicons } from "@expo/vector-icons";
 
 interface TarotHeaderProps {
   coinBalance: number;
@@ -24,16 +25,16 @@ export default function TarotHeader({
   <View style={styles.container}>
     <View style={styles.left}>
       <TouchableOpacity
-        style={styles.backButton}
-        activeOpacity={0.8}
-        onPress={() => router.back()}
-      >
-        <Text style={styles.backIcon}>←</Text>
-
-        <Text style={styles.backText}>
-          Geri Dön
-        </Text>
-      </TouchableOpacity>
+  style={styles.backButton}
+  activeOpacity={0.8}
+  onPress={() => router.back()}
+>
+  <Ionicons
+  name="chevron-back"
+  size={18}
+  color={Theme.colors.white}
+/>
+</TouchableOpacity>
     </View>
 
     <View style={styles.center}>
@@ -52,15 +53,40 @@ export default function TarotHeader({
 
 const styles = StyleSheet.create({
   container: {
-  marginTop: Theme.spacing.sm,
-  marginBottom: Theme.spacing.xxl,
+    marginTop: Theme.spacing.sm,
+    marginBottom: Theme.spacing.xxl,
 
-  flexDirection: "row",
-  alignItems: "center",
-},
+    flexDirection: "row",
+    alignItems: "center",
+  },
+
+  left: {
+    flex: 1,
+    alignItems: "flex-start",
+    justifyContent: "center",
+  },
+
+  center: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
+  right: {
+    flex: 1,
+    alignItems: "flex-end",
+    justifyContent: "center",
+  },
 
   backButton: {
-    flexDirection: "row",
+    width: 42,
+    height: 42,
+
+    borderRadius: Theme.radius.full,
+
+    backgroundColor: Theme.colors.card,
+
+    justifyContent: "center",
     alignItems: "center",
   },
 
@@ -73,28 +99,11 @@ const styles = StyleSheet.create({
   backText: {
     color: Theme.colors.white,
     fontSize: Theme.fontSizes.md,
-    fontWeight: "600",
+    fontWeight: Theme.typography.medium,
   },
 
   logo: {
     width: 110,
     height: 42,
   },
-  left: {
-  flex: 1,
-  alignItems: "flex-start",
-  justifyContent: "center",
-},
-
-center: {
-  flex: 1,
-  alignItems: "center",
-  justifyContent: "center",
-},
-
-right: {
-  flex: 1,
-  alignItems: "flex-end",
-  justifyContent: "center",
-},
 });

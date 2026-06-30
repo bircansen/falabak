@@ -6,6 +6,7 @@ export const Typography = {
   body: 15,
   small: 13,
 
-  bold: "700",
+  regular: "400",
   medium: "600",
-};
+  bold: "700",
+} as const;

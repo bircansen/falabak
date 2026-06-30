@@ -30,12 +30,18 @@ export const Colors = {
 
   arrowBackground: "#465174",
 
+  arrowOverlay: "rgba(255,255,255,0.75)",
+
   whiteOverlay: "rgba(255,255,255,0.18)",
   whiteOverlayLight: "rgba(255,255,255,0.10)",
   whiteOverlayLighter: "rgba(255,255,255,0.06)",
 
   quoteGradientStart: "#376CFF",
   quoteGradientEnd: "#355AF7",
+
+  promotionGradientStart: "#20294A",
+  promotionGradientEnd: "#1A223F",
+
 
   quoteTitle: "#D7E5FF",
   quoteAuthor: "#C9DBFF",

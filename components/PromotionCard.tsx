@@ -4,6 +4,7 @@ import { LinearGradient } from "expo-linear-gradient";
 
 import { Theme } from "../constants/theme";
 import { useCountdown } from "../hooks/useCountdown";
+import { Platform } from "react-native";
 
 interface PromotionCardProps {
   discountPercent: number;
@@ -23,11 +24,14 @@ export default function PromotionCard({
 
   return (
     <LinearGradient
-      colors={["#20294A", "#1A223F"]}
-      start={{ x: 0, y: 0 }}
-      end={{ x: 1, y: 1 }}
-      style={styles.container}
-    >
+  colors={[
+    Theme.colors.promotionGradientStart,
+    Theme.colors.promotionGradientEnd,
+  ]}
+  start={{ x: 0, y: 0 }}
+  end={{ x: 1, y: 1 }}
+  style={styles.container}
+>
       <View style={styles.discountContainer}>
         <View style={styles.discountWrapper}>
           <Image
@@ -55,11 +59,15 @@ export default function PromotionCard({
           style={styles.titleImage}
         />
 
-        <Text style={styles.timer}>
-          {expired
-            ? "Süre doldu"
-            : `${hours} Saat : ${minutes} Dakika : ${seconds} Saniye`}
-        </Text>
+        <Text
+  style={styles.timer}
+  numberOfLines={1}
+  adjustsFontSizeToFit
+>
+  {expired
+    ? "Süre doldu"
+    : `${hours} Saat : ${minutes} Dakika : ${seconds} Saniye`}
+</Text>
       </View>
     </LinearGradient>
   );
@@ -84,7 +92,7 @@ const styles = StyleSheet.create({
   discountContainer: {
     width: 126,
     height: "100%",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     alignItems: "center",
   },
 
@@ -108,39 +116,39 @@ const styles = StyleSheet.create({
 
   percent: {
     color: Theme.colors.white,
-    fontSize: Theme.fontSizes.xxl,
-    fontWeight: "600",
-    lineHeight: 30,
+    fontSize: Platform.OS === "android" ? Theme.fontSizes.lg : Theme.fontSizes.xl,
+    fontWeight: Theme.typography.medium,
+    lineHeight: Platform.OS === "android" ? 22 : 26,
     textAlign: "center",
     letterSpacing: 0.2,
   },
 
   discountText: {
     color: Theme.colors.white,
-    fontSize: Theme.fontSizes.md,
-    fontWeight: "500",
-    lineHeight: 30,
+    fontSize: Platform.OS === "android" ? Theme.fontSizes.sm : Theme.fontSizes.md,
+    fontWeight: Theme.typography.regular,
+    lineHeight: Platform.OS === "android" ? 20 : 24,
     textAlign: "center",
     letterSpacing: 0.14,
     marginTop: -Theme.spacing.sm,
+  },
+
+  timer: {
+    color: Theme.colors.white,
+    fontSize: Theme.fontSizes.lg,
+    fontWeight: Theme.typography.medium,
+    lineHeight: 22,
   },
 
   content: {
     flex: 1,
     justifyContent: "center",
     paddingRight: 35,
-    gap: Theme.spacing.md,
   },
 
   titleImage: {
     width: 104,
     height: 21.3,
-  },
-
-  timer: {
-    color: Theme.colors.white,
-    fontSize: Theme.fontSizes.lg,
-    fontWeight: "600",
-    lineHeight: 16,
+    marginBottom: Theme.spacing.md,
   },
 });

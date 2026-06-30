@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     width: 116,
     height: 40,
 
-    borderRadius: 26,
+    borderRadius: Theme.radius.full,
 
     backgroundColor: Theme.colors.primary,
 
@@ -115,8 +115,8 @@ const styles = StyleSheet.create({
 
     color: Theme.colors.white,
 
-    fontSize: 15,
-    fontWeight: "400",
+    fontSize: Theme.fontSizes.sm,
+    fontWeight: Theme.typography.regular,
 
     includeFontPadding: false,
   },
